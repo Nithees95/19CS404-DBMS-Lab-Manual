@@ -8,91 +8,7 @@ Gain hands-on experience in designing ER diagrams that represent database struct
 
 ---
 
-# Scenario A: City Fitness Club Management
-
-**Business Context:**  
-FlexiFit Gym wants a database to manage its members, trainers, and fitness programs.
-
-**Requirements:**  
-- Members register with name, membership type, and start date.  
-- Each member can join multiple programs (Yoga, Zumba, Weight Training).  
-- Trainers assigned to programs; a program may have multiple trainers.  
-- Members may book personal training sessions with trainers.  
-- Attendance recorded for each session.  
-- Payments tracked for memberships and sessions.
-
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_fitness.png)
-
-### Entities and Attributes
-
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-
-### Relationships and Constraints
-
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
-
-### Assumptions
-- 
-- 
-- 
-
----
-
-# Scenario B: City Library Event & Book Lending System
-
-**Business Context:**  
-The Central Library wants to manage book lending and cultural events.
-
-**Requirements:**  
-- Members borrow books, with loan and return dates tracked.  
-- Each book has title, author, and category.  
-- Library organizes events; members can register.  
-- Each event has one or more speakers/authors.  
-- Rooms are booked for events and study.  
-- Overdue fines apply for late returns.
-
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_library.png)
-
-### Entities and Attributes
-
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-
-### Relationships and Constraints
-
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
-
-### Assumptions
-- 
-- 
-- 
-
----
-
-# Scenario C: Restaurant Table Reservation & Ordering
+# Restaurant Table Reservation & Ordering
 
 **Business Context:**  
 A popular restaurant wants to manage reservations, orders, and billing.
@@ -106,38 +22,52 @@ A popular restaurant wants to manage reservations, orders, and billing.
 - Waiters assigned to serve reservations.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
+
+<img width="4998" height="2628" alt="erdplus (4)" src="https://github.com/user-attachments/assets/c8f98027-16ce-402e-8019-e1738e5fdec3" />
+
 
 ### Entities and Attributes
 
 | Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+|--------|---------------------|-------|
+| Customer | CustomerID (PK), Name, PhoneNumber, TableNumber | Stores customer details |
+| Waiter | WaiterID (PK), Name, ContactDetails, Experience | Stores waiter details |
+| Chef | ChefID (PK), Name, ContactDetails, Speciality | Stores chef details |
+| Table | TableID (PK), Location, Status, SeatingCapacity | Stores table information |
+| FoodItem | FoodItemID (PK), Name, Price, Category, Availability | Stores menu information |
+| Order | OrderID (PK), OrderDate, TotalAmount, Status, WaiterID (FK), TableID (FK) | Stores order details |
+| OrderItem | OrderItemID (PK), OrderID (FK), FoodItemID (FK), Quantity, ItemStatus | Stores ordered items |
+| Bill | BillID (PK), OrderID (FK), Amount, PaymentStatus, PaymentDate | Stores billing details |
+| Supervisor | SupervisorID (PK), Name, ContactNumber, Department | Stores supervisor details |
 
 ### Relationships and Constraints
 
 | Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+|--------------|-------------|---------------|-------|
+| Customer - Table (Assigned To) | Many-to-One | Customer: Total; Table: Partial | Customers are assigned to tables |
+| Waiter - Table (Serves) | One-to-Many | Waiter: Partial; Table: Total | A waiter serves multiple tables |
+| Waiter - Order (Creates) | One-to-Many | Waiter: Partial; Order: Total | A waiter creates multiple orders |
+| Order - Table (Belongs To) | Many-to-One | Order: Total; Table: Partial | Each order belongs to one table |
+| Order - OrderItem (Contains) | One-to-Many | Both: Total | An order contains multiple items |
+| OrderItem - FoodItem (Selects) | Many-to-One | OrderItem: Total; FoodItem: Partial | Each order item refers to one food item |
+| Order - Bill (Generates) | One-to-One | Order: Partial; Bill: Total | A bill is generated for an order |
+| Chef - OrderItem (Prepares) | One-to-Many | Chef: Partial; OrderItem: Total | A chef prepares multiple items |
+| Supervisor - Order (Monitors) | One-to-Many | Supervisor: Partial; Order: Partial | A supervisor monitors order issues |
 
 ### Assumptions
-- 
-- 
-- 
+
+- Each entity has a unique primary key.
+- Foreign keys connect related entities.
+- Each customer is assigned to a table.
+- A waiter can serve multiple tables and create multiple orders.
+- Each order belongs to one table.
+- An order contains one or more order items.
+- Each order item refers to one food item.
+- Food items have prices, categories, and availability.
+- Each order can generate one bill.
+- Each order item is prepared by one chef.
+- Supervisors monitor order-related issues.
+- Table status indicates whether a table is occupied or available.
+- Payment status indicates whether the bill is paid or unpaid.
 
 ---
-
-## Instructions for Students
-
-1. Complete **all three scenarios** (A, B, C).  
-2. Identify entities, relationships, and attributes for each.  
-3. Draw ER diagrams using **draw.io / diagrams.net** or hand-drawn & scanned.  
-4. Fill in all tables and assumptions for each scenario.  
-5. Export the completed Markdown (with diagrams) as **a single PDF**
