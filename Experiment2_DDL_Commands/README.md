@@ -105,123 +105,289 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+```
+Insert the following products into the Products table:
+
+Name        Category     Price       Stock
+----------  -----------  ----------  ----------
+Smartphone  Electronics  800         150
+Headphones  Accessories  200         300
+```
 
 ```sql
--- Paste your SQL code below for Question 1
+insert into Products(Name,Category,Price,Stock)
+Values ('Smartphone', 'Electronics','800','150');
+insert into Products(Name,Category,Price,Stock)
+Values('Headphones','Accessories','200','300');
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="955" height="210" alt="image" src="https://github.com/user-attachments/assets/ee607457-d8ff-41fd-8d81-bcbfc4f5bb63" />
 
 **Question 2**
 ---
--- Paste Question 2 here
-
-```sql
--- Paste your SQL code below for Question 2
 ```
+Insert a product with ProductID 104, Name Tablet, and Category Electronics into the Products table, where Price and Stock should use default values.
 
+For example:
+
+Test	Result
+SELECT ProductID, Name, Category, Price, Stock 
+FROM Products 
+WHERE ProductID = 104;
+ProductID   Name        Category     Price       Stock
+----------  ----------  -----------  ----------  ----------
+104         Tablet      Electronics  100         50
+```
+```sql
+INSERT INTO Products (ProductID, Name, Category)  
+VALUES (104, 'Tablet', 'Electronics');```
+```
 **Output:**
 
-![Output2](output.png)
+<img width="1002" height="120" alt="image" src="https://github.com/user-attachments/assets/c66920e2-280c-4360-a98b-7760acfd576e" />
 
 **Question 3**
 ---
--- Paste Question 3 here
+```
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should set NULL on updates and deletes.
+item_desc and rate should not accept NULL.
+For example:
 
+Test	Result
+INSERT INTO item VALUES("ITM5","Charlie Gold",700,"COM4");
+UPDATE company SET com_id='COM5' WHERE com_id='COM4';
+SELECT * FROM item;
+item_id     item_desc     rate        icom_id
+----------  ------------  ----------  ----------
+ITM5        Charlie Gold  700
+```
 ```sql
--- Paste your SQL code below for Question 3
+CREATE TABLE item(item_id TEXT PRIMARY KEY,item_desc TEXT NOT NULL,rate INTEGER NOT NULL,icom_id TEXT CHECK(length(icom_id)=4),FOREIGN KEY (icom_id) REFERENCES company(com_id)ON UPDATE SET NULL ON DELETE SET NULL);
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="942" height="191" alt="image" src="https://github.com/user-attachments/assets/eb5e6dd0-2414-4079-beed-48bce13645ff" />
 
 **Question 4**
 ---
--- Paste Question 4 here
+```
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
+For example:
 
+Test	Result
+INSERT INTO item VALUES("ITM5","Charlie Gold",700,"COM4");
+UPDATE company SET com_id='COM5' WHERE com_id='COM4';
+SELECT * FROM item;
+item_id     item_desc     rate        icom_id
+----------  ------------  ----------  ----------
+ITM5        Charlie Gold  700         COM5
+```
 ```sql
--- Paste your SQL code below for Question 4
+CREATE TABLE item (
+    item_id TEXT PRIMARY KEY,
+    item_desc TEXT NOT NULL,
+    rate INTEGER NOT NULL,
+    icom_id TEXT(4) CHECK (LENGTH(icom_id)=4),
+    FOREIGN KEY (icom_id) REFERENCES company(com_id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+    
+);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="957" height="183" alt="image" src="https://github.com/user-attachments/assets/d35359c4-20cc-4770-b582-029d65b92fe0" />
 
 **Question 5**
 ---
--- Paste Question 5 here
+```
+Write an SQL query to add two new columns, department_id and manager_id, to the table employee with datatype of INTEGER. The manager_id column should have a default value of NULL.
+For example:
 
+Test	Result
+PRAGMA table_info(employee);
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           id          integer     0                       0
+1           salary      number      0                       0
+2           department  INTEGER     0                       0
+3           manager_id  INTEGER     0           NULL        0
+```
 ```sql
--- Paste your SQL code below for Question 5
+ALTER TABLE employee
+ADD COLUMN department_id INTEGER;
+ALTER TABLE employee
+ADD COLUMN manager_id INTEGER DEFAULT NULL;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="882" height="178" alt="image" src="https://github.com/user-attachments/assets/b1732abb-cd7b-4dac-b9ef-1d27d55ee02b" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+```
+Write a SQL query to Add a new column State as text in the Student_details table.
 
+Sample table: Student_details
+
+ cid              name             type   notnull     dflt_value  pk
+---------------  ---------------  -----  ----------  ----------  ----------
+0                RollNo           int    0                       1
+1                Name             VARCH  1                       0
+2                Gender           TEXT   1                       0
+3                Subject          VARCH  0                       0
+4                MARKS            INT (  0                       0
+For example:
+
+Test	Result
+pragma table_info('Student_details');
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           RollNo      int         0                       1
+1           Name        VARCHAR(10  1                       0
+2           Gender      TEXT        1                       0
+3           Subject     VARCHAR(30  0                       0
+4           MARKS       INT (3)     0                       0
+5           State       TEXT        0                       0
+```
 ```sql
--- Paste your SQL code below for Question 6
+ALTER TABLE Student_details ADD State TEXT;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="957" height="175" alt="image" src="https://github.com/user-attachments/assets/c5adfb64-ff94-49ba-875a-ef9ee88c265c" />
 
 **Question 7**
 ---
--- Paste Question 7 here
+```
+create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
+For example:
 
+Test	Result
+INSERT INTO jobs (job_id, job_title, min_salary, max_salary) VALUES (1, 'Software Engineer', 9000, 15000);
+SELECT * FROM jobs;
+job_id      job_title          min_salary  max_salary
+----------  -----------------  ----------  ----------
+1           Software Engineer  9000        15000
+```
 ```sql
--- Paste your SQL code below for Question 7
+CREATE TABLE jobs(
+job_id int PRIMARY KEY,
+job_title varchar(225) default'',
+min_salary int default 8000,
+max_salary int default null
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="818" height="117" alt="image" src="https://github.com/user-attachments/assets/db47048e-39fc-4436-b749-4b1bacc9f7f9" />
 
 **Question 8**
 ---
--- Paste Question 8 here
+```
+Create a table named Department with the following constraints:
+DepartmentID as INTEGER should be the primary key.
+DepartmentName as TEXT should be unique and not NULL.
+Location as TEXT.
+For example:
 
+Test	Result
+INSERT INTO Department (DepartmentID, DepartmentName, Location) VALUES (1, 'Human Resources', 'New York');
+select * from Department;
+DepartmentID  DepartmentName   Location
+------------  ---------------  ----------
+1             Human Resources  New York
+```
 ```sql
--- Paste your SQL code below for Question 8
+CREATE TABLE Department(
+DepartmentID INTEGER PRIMARY KEY,
+DepartmentName TEXT UNIQUE NOT NULL,
+Location TEXT
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="953" height="97" alt="image" src="https://github.com/user-attachments/assets/4a3e5ec9-45cd-4e46-8ae0-de3aeb8240e7" />
 
 **Question 9**
 ---
--- Paste Question 9 here
+```
+Create a table named Tasks with the following columns:
 
+TaskID as INTEGER
+TaskName as TEXT
+DueDate as DATE
+For example:
+
+Test	Result
+pragma table_info('Tasks');
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           TaskID      INTEGER     0                       0
+1           TaskName    TEXT        0                       0
+2           DueDate     DATE        0                       0
+```
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE Tasks(TaskID INTEGER,TaskName TEXT,DueDate DATE);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="965" height="173" alt="image" src="https://github.com/user-attachments/assets/b35aedf4-c0d8-473f-b6b3-c979ebdf5654" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+```
+Insert all students from Archived_students table into the Student_details table.
 
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           RollNo      INT           0                       1
+1           Name        VARCHAR(100)  0                       0
+2           Gender      VARCHAR(10)   0                       0
+3           Subject     VARCHAR(50)   0                       0
+4           MARKS       INT           0                       0
+For example:
+
+Test	Result
+select * from student_details;
+RollNo      Name           Gender      Subject     MARKS
+----------  -------------  ----------  ----------  ----------
+1           Alice Johnson  Female      Math        85
+2           Bob Smith      Male        Science     90
+3           Charlie Brown  Male        English     78
+
+```
 ```sql
--- Paste your SQL code below for Question 10
+INSERT INTO Student_details
+SELECT *
+FROM Archived_students
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="812" height="130" alt="image" src="https://github.com/user-attachments/assets/7a34de00-2f64-4f68-94c2-25e6b53d097a" />
 
 
 ## RESULT
