@@ -57,6 +57,7 @@ Urology            1
 
 
 ```sql
+SELECT Specialty, COUNT(DoctorID) AS TotalDoctors
 FROM Doctors
 GROUP BY Specialty;
 ```
@@ -93,6 +94,10 @@ HourOfDay   TotalAppointments
 16          1
 ```
 ```sql
+SELECT
+strftime('%H', AppointmentDateTime) AS HourOfDay,
+COUNT(*) AS TotalAppointments
+FROM Appointments
 GROUP BY HourOfDay
 ORDER BY HourOfDay;
 ```
@@ -120,6 +125,7 @@ DoctorID    TotalAppointments
 10          1
 ```
 ```sql
+SELECT DoctorID, COUNT(*) AS TotalAppointments
 FROM Appointments
 GROUP BY DoctorID;
 ```
@@ -226,6 +232,7 @@ COUNT
 ```sql
 SELECT COUNT(*) AS COUNT
 FROM customer
+WHERE grade IS NOT NULL;
 ```
 
 **Output:**
@@ -338,6 +345,7 @@ Mumbai      6500.0
 ```sql
 select address,avg(salary) as 'AVG(salary)' from customer1
 group by address
+having AVG(salary)>5000
 ```
 
 **Output:**
@@ -362,6 +370,8 @@ category_id  AVG(Price)
 ```sql
 SELECT category_id, AVG(price) AS "AVG(Price)"
 FROM products
+GROUP BY category_id
+HAVING AVG(price) BETWEEN 10 AND 15;
 ```
 
 **Output:**
