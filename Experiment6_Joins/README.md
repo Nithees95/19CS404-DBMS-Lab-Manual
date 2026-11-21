@@ -109,7 +109,6 @@ WHERE
 **Output:**
 
 
-
 **Question 2**
 ---
 ```
