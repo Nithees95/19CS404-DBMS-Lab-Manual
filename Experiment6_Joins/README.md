@@ -108,6 +108,8 @@ WHERE
 
 **Output:**
 
+<img width="992" height="355" alt="image" src="https://github.com/user-attachments/assets/89c491e5-2ca3-4b27-97e8-2928b2b4cde3" />
+
 
 **Question 2**
 ---
@@ -193,7 +195,7 @@ JOIN
 
 **Output:**
 
-![Output2](output.png)
+<img width="1027" height="457" alt="image" src="https://github.com/user-attachments/assets/76458ef8-9f31-4c34-849c-3a06dc0329d3" />
 
 **Question 3**
 ---
@@ -228,7 +230,7 @@ WHERE
 
 **Output:**
 
-![Output3](output.png)
+<img width="1057" height="167" alt="image" src="https://github.com/user-attachments/assets/fb768d10-5288-4b0e-be57-6937c1dd725e" />
 
 **Question 4**
 ---
@@ -274,7 +276,7 @@ AND d.last_name = 'Smith';
 
 **Output:**
 
-![Output4](output.png)
+<img width="1210" height="215" alt="image" src="https://github.com/user-attachments/assets/209aa3d9-dc55-46c7-b3b8-de8fe3097327" />
 
 **Question 5**
 ---
@@ -320,7 +322,7 @@ WHERE s.surgery_date = '2024-01-15';
 
 **Output:**
 
-![Output5](output.png)
+<img width="347" height="316" alt="image" src="https://github.com/user-attachments/assets/64c5a024-54f1-4ae7-88bd-733cbf1b07b4" />
 
 **Question 6**
 ---
@@ -383,7 +385,7 @@ ORDER BY
 
 **Output:**
 
-![Output6](output.png)
+<img width="1297" height="583" alt="image" src="https://github.com/user-attachments/assets/618ffa3c-ccf2-46ac-b985-9ee51334c47a" />
 
 **Question 7**
 ---
@@ -445,7 +447,7 @@ LEFT JOIN
 
 **Output:**
 
-![Output7](output.png)
+<img width="1125" height="711" alt="image" src="https://github.com/user-attachments/assets/ed43ea96-496b-4a77-ab1b-5e0cbf869da3" />
 
 **Question 8**
 ---
@@ -509,7 +511,7 @@ WHERE
 
 **Output:**
 
-![Output8](output.png)
+<img width="1116" height="335" alt="image" src="https://github.com/user-attachments/assets/cf98906f-14b2-41b0-93c5-2b2e2259185e" />
 
 **Question 9**
 ---
@@ -550,7 +552,7 @@ LEFT JOIN
 
 **Output:**
 
-![Output9](output.png)
+<img width="608" height="711" alt="image" src="https://github.com/user-attachments/assets/a063322f-41b7-4b9d-ac77-9ad91e804a9d" />
 
 **Question 10**
 ---
@@ -593,7 +595,7 @@ ON c.customer_id = o.customer_id;
 
 **Output:**
 
-![Output10](output.png)
+<img width="581" height="501" alt="image" src="https://github.com/user-attachments/assets/5f8c8317-e9c5-494f-9c3d-25992cfef950" />
 
 
 ## RESULT
